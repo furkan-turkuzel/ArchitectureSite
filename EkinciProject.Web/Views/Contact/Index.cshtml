@@ -1,0 +1,63 @@
+﻿@model EkinciProject.Web.Models.ContactViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="icon" href="~/Content/images/favicon.png" type="image/x-icon" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/vendors/animate/animate.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/vendors/camera-slider/camera.css">
+<link rel="stylesheet" type="text/css" href="~/Content/vendors/owl_carousel/owl.carousel.css" media="all">
+<link rel="stylesheet" type="text/css" href="~/Content/css/style.css" media="all" />
+
+
+<div class="preloader"></div>
+
+<section class="all_contact_info">
+    <div class="container">
+        <div class="row contact_row">
+            <div class="col-sm-6 contact_info">
+                <h2>İletişim Bilgileri</h2>
+
+                <div class="location">
+                    <div class="location_laft">
+                        <h4>Adres</h4>
+                        <h4>Telefon</h4>
+                        <h4>E-Mail</h4>
+                    </div>
+                    <div class="address">
+                        <h4>@Model.Address</h4>
+                        <h4>@Model.Phone</h4>
+                        <h4>@Model.Mail</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 contact_info send_message">
+                <h2>Bize Mesaj Gönderin</h2>
+
+                @{ Html.RenderAction("Message", "Contact");}
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="contact_map">
+    @Model.MapUrl
+</div>
+
+<script src="~/Content/js/jquery-1.12.0.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/vendors/animate/wow.min.js"></script>
+<script src="~/Content/vendors/camera-slider/jquery.easing.1.3.js"></script>
+<script src="~/Content/vendors/camera-slider/camera.min.js"></script>
+<script src="~/Content/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="~/Content/vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="~/Content/vendors/Counter-Up/jquery.counterup.min.js"></script>
+<script src="~/Content/vendors/Counter-Up/waypoints.min.js"></script>
+<script src="~/Content/vendors/owl_carousel/owl.carousel.min.js"></script>
+<script src="~/Content/vendors/stellar/jquery.stellar.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="~/Content/vendors/map/topbuilder_map.min.js"></script>
+<script src="~/Content/js/theme.js"></script>
+

@@ -1,0 +1,78 @@
+﻿@model EkinciProject.Web.Models.AboutViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="icon" href="~/Content/images/favicon.png" type="image/x-icon" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/vendors/animate/animate.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/vendors/camera-slider/camera.css">
+<link rel="stylesheet" type="text/css" href="~/Content/vendors/owl_carousel/owl.carousel.css" media="all">
+<link rel="stylesheet" type="text/css" href="~/Content/css/style.css" media="all" />
+
+<div class="preloader"></div>
+
+<!-- About Us Area -->
+<section class="about_us_area row">
+    <div class="container">
+        <div class="tittle wow fadeInUp">
+            <h2>Hakkımızda</h2>
+        </div>
+        @{
+            int counter = 0;
+            foreach (var item in Model.AboutList)
+            {
+                if (counter % 2 == 0)
+                {
+                    <div class="row about_row" style="padding-top:50px;padding-bottom:0;">
+                        <div class="col-md-5 col-sm-6 about_client about_pages_client">
+                            <img src="@Url.Content(item.ImageUrl)" alt="">
+                        </div>
+                        <div class="who_we_area col-md-7 col-sm-6">
+                            <div class="subtittle">
+                                <h2>@item.Title</h2>
+                            </div>
+                            <p>
+                                @item.Writing
+                            </p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row about_row">
+                        <div class="who_we_area col-md-7 col-sm-6">
+                            <div class="subtittle">
+                                <h2>@item.Title</h2>
+                            </div>
+                            <p>
+                                @item.Writing
+                            </p>
+                        </div>
+                        <div class="col-md-5 col-sm-6 about_client about_pages_client">
+                            <img src="@Url.Content(item.ImageUrl)" alt="">
+                        </div>
+                    </div>
+                    
+                }
+                counter++;
+            }
+        }
+
+    </div>
+</section>
+<!-- End About Us Area -->
+<script src="~/Content/js/jquery-1.12.0.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/vendors/animate/wow.min.js"></script>
+<script src="~/Content/vendors/camera-slider/jquery.easing.1.3.js"></script>
+<script src="~/Content/vendors/camera-slider/camera.min.js"></script>
+<script src="~/Content/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="~/Content/vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="~/Content/vendors/Counter-Up/jquery.counterup.min.js"></script>
+<script src="~/Content/vendors/Counter-Up/waypoints.min.js"></script>
+<script src="~/Content/vendors/owl_carousel/owl.carousel.min.js"></script>
+<script src="~/Content/vendors/stellar/jquery.stellar.js"></script>
+<script src="~/Content/js/theme.js"></script>
+

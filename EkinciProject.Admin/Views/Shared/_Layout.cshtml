@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-16" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="~/Content/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/assets/libs/css/style.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+</head>
+<body>
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="@Url.Action("Index","Panel")">Administrator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                    <li class="nav-item">
+                        <div id="custom-search" class="top-search-bar">
+                            <input class="form-control" type="text" placeholder="Search..">
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown notification">
+                        <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                            <li>
+                                <div class="notification-title"> Notification</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name">Hoşgeldin @HttpContext.Current.User.Identity.Name</h5>
+                            </div>
+                            <a class="dropdown-item" href="@Url.Action("Profile","Security")"><i class="fas fa-user-circle"></i>Profil</a>
+                            <a class="dropdown-item" href="@Url.Action("Setting","Security")"><i class="fas fa-cog mr-2"></i>Ayarlar</a>
+                            <a class="dropdown-item" href="@Url.Action("Logout","Security")"><i class="fas fa-power-off mr-2"></i>Çıkış</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Panel</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
+                                <i class="fa fa-fw fa-info"></i>
+                                Hakkımızda
+                            </a>
+                            <div id="submenu-1" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("AboutCreate","About")">Yeni Oluştur<span class="badge badge-secondary">New</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("AboutEditDeletePage","About")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
+                                <i class="fa fa-fw fa-table"></i>Hizmetler
+                            </a>
+                            <div id="submenu-2" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ServiceCreate","Service")">Yeni Oluştur<span class="badge badge-secondary">New</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ServiceEditDeletePage","Service")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-13" aria-controls="submenu-13">
+                                <i class="fa fa-fw fa-pen-square"></i>
+                                Haberler
+                            </a>
+                            <div id="submenu-13" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("NewsCreate","News")">Yeni Oluştur<span class="badge badge-secondary">New</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("NewsEditDeletePage","News")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-list"></i>İmar Barışı Bilgi</a>
+                            <div id="submenu-3" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ReconstructionCreate","Reconstruction")">Yeni Oluştur</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ReconstructionEditDeletePage","Reconstruction")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-list"></i>Sık Sorulan Sorular</a>
+                            <div id="submenu-4" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("MostAskedCreate","MostAsked")">Yeni Oluştur</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("MostAskedEditDeletePage","MostAsked")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-desktop"></i>Referanslar</a>
+                            <div id="submenu-5" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ReferenceCreate","Reference")">Yeni Oluştur</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ReferenceEditDeletePage","Reference")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Contact","Contact")">
+                                <i class="fas fa-fw fa-phone"></i>İletişim
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7">
+                                <i class="fas fa-fw fa-user-circle"></i>Ekip<span class="badge badge-secondary">New</span>
+                            </a>
+                            <div id="submenu-7" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("TeamCreate","Team")">Yeni Oluştur</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("TeamEditDeletePage","Team")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-user"></i>Adminler</a>
+                            <div id="submenu-8" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("AdminCreate","Admin")">Yeni Oluştur</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("AdminEditDeletePage","Admin")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="fas fa-fw fa-sliders-h"></i>Slider</a>
+                            <div id="submenu-9" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("SlidersCreate","Slider")">Yeni Oluştur</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("SlidersEditDeletePage","Slider")">Düzenle Veya Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <script src="~/Content/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/Content/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/Content/assets/libs/js/main-js.js"></script>
+    <script src="~/Content/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="~/Content/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="~/Content/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="~/Content/assets/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="~/Content/assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="~/Content/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="~/Content/assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="~/Content/assets/libs/js/dashboard-ecommerce.js"></script>
+</body>
+</html>

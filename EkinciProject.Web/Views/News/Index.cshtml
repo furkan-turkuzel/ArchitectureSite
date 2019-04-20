@@ -1,0 +1,76 @@
+﻿@model EkinciProject.Web.Models.NewsViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="icon" href="~/Content/images/favicon.png" type="image/x-icon" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/vendors/animate/animate.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/vendors/camera-slider/camera.css">
+<link rel="stylesheet" type="text/css" href="~/Content/vendors/owl_carousel/owl.carousel.css" media="all">
+<link rel="stylesheet" type="text/css" href="~/Content/css/style.css" media="all" />
+
+<div class="preloader"></div>
+
+<!-- Banner area -->
+<section class="banner_area" data-stellar-background-ratio="0.5">
+    <h2>Haberler</h2>
+</section>
+<!-- End Banner area -->
+<!-- blog-2 area -->
+<section class="blog_tow_area">
+    <div class="container">
+        <div class="row blog_tow_row">
+            @foreach (var item in Model.NewsList)
+            {
+                <div class="col-md-4 col-sm-6">
+                    <div class="renovation">
+                        <img src="~/Content/images/1Igwcar.jpg" alt="">
+                        <div class="renovation_content">
+                            <a class="clipboard" href="#"><i class="fa fa-clipboard" aria-hidden="true"></i></a>
+                            <a class="tittle" href="#">@item.Title</a>
+                            <div class="date_comment">
+                                <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>@item.NewsDate.ToString("dd.MM.yyyy")</a>
+                                <a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i>@item.Admin.UserName</a>
+                            </div>
+                            <p>
+                                @{
+                                    if (item.Writing.Length > 80)
+                                    {
+                                        <span>
+                                            @item.Writing.Substring(0, 80).ToString();
+                                        </span>
+
+                                    }
+                                    else
+                                    {
+                                        <span>
+                                            @item.Writing.ToString();
+                                        </span>
+
+                                    }
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- End blog-2 area -->
+
+
+<script src="~/Content/js/jquery-1.12.0.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/vendors/animate/wow.min.js"></script>
+<script src="~/Content/vendors/camera-slider/jquery.easing.1.3.js"></script>
+<script src="~/Content/vendors/camera-slider/camera.min.js"></script>
+<script src="~/Content/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="~/Content/vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="~/Content/vendors/Counter-Up/jquery.counterup.min.js"></script>
+<script src="~/Content/vendors/Counter-Up/waypoints.min.js"></script>
+<script src="~/Content/vendors/owl_carousel/owl.carousel.min.js"></script>
+<script src="~/Content/vendors/stellar/jquery.stellar.js"></script>
+<script src="~/Content/js/theme.js"></script>
+

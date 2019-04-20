@@ -1,0 +1,76 @@
+﻿@model EkinciProject.Admin.Models.ReferenceEditViewModel
+@{
+    ViewBag.Title = "ReferenceEdit";
+}
+
+<link rel="stylesheet" href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link href="~/Content/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/assets/libs/css/style.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/datepicker/tempusdominus-bootstrap-4.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/inputmask/css/inputmask.css" />
+
+<div class="dashboard-main-wrapper">
+    <div class="dashboard-wrapper">
+        <div class="container-fluid dashboard-content" style="padding:0;margin-top:30px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Referans Düzenle</h5>
+                                <div class="card-body">
+
+
+                                    @using (Html.BeginForm("ReferenceEdit", "Reference", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            @Html.LabelFor(x => x.ReferanceType, new { @class = "form-label" })
+                                            @Html.TextBoxFor(x => x.ReferanceType, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(x => x.ReferanceName, new { @class = "form-label" })
+                                            @Html.TextBoxFor(x => x.ReferanceName, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(x => x.ReferancePhone, new { @class = "form-label" })
+                                            @Html.TextBoxFor(x => x.ReferancePhone, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(x => x.ReferanceAddress, new { @class = "form-label" })
+                                            @Html.TextBoxFor(x => x.ReferanceAddress, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(x => x.Description, new { @class = "form-label" })
+                                            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(x => x.ReferanceLogo, new { @class = "form-label" })
+                                            <input type="file" asp-for="FileUrl" name="FileUrl" class="form-control" />
+                                        </div>
+                                        <div class="alert alert-@ViewBag.MessageType" role="alert">
+                                            @ViewBag.Message
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text-right">
+                                                <button type="submit" class="btn btn-success">Düzenle</button>
+                                            </p>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="~/Content/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+<script src="~/Content/assets/libs/js/main-js.js"></script>
+<script src="~/Content/assets/vendor/inputmask/js/jquery.inputmask.bundle.js"></script>
+
+

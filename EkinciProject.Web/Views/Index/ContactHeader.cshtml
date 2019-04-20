@@ -1,0 +1,32 @@
+﻿@model EkinciProject.Web.Models.ContactViewModel
+
+<div class="container">
+    <ul class="nav navbar-nav top_nav">
+        <li><a href="#"><i class="fa fa-phone"></i>@Model.Phone</a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i>@Model.Mail</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right social_nav">
+        @{
+            if (Model.Facebook != "")
+            {
+                <li><a href="@Model.Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            }
+            else if (Model.Twitter != "")
+            {
+                <li><a href="@Model.Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            }
+            else if (Model.Instagram != "")
+            {
+                <li><a href="@Model.Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            }
+            else if (Model.Youtube != "")
+            {
+                <li><a href="@Model.Youtube"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+            }
+            else if (Model.Linkedin != "")
+            {
+                <li><a href="@Model.Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            }
+        }
+    </ul>
+</div>

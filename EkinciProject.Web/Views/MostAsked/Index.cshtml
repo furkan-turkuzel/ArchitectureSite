@@ -1,0 +1,56 @@
+﻿@model EkinciProject.Web.Models.MostAskedViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="icon" href="~/Content/images/favicon.png" type="image/x-icon" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/vendors/animate/animate.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/vendors/camera-slider/camera.css">
+<link rel="stylesheet" type="text/css" href="~/Content/vendors/owl_carousel/owl.carousel.css" media="all">
+<link rel="stylesheet" type="text/css" href="~/Content/css/style.css" media="all" />
+
+<div class="preloader"></div>
+
+<!-- About Us Area -->
+<section class="about_us_area row">
+    <div class="container">
+        <div class="tittle wow fadeInUp">
+            <h2>Sık Sorulan Sorular</h2>
+        </div>
+
+        @foreach (var item in Model.MostAskedList)
+        {
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            @item.Question
+                        </button>
+                    </h5>
+                </div>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    @item.Answer
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="vendors/animate/wow.min.js"></script>
+<script src="vendors/camera-slider/jquery.easing.1.3.js"></script>
+<script src="vendors/camera-slider/camera.min.js"></script>
+<script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="vendors/Counter-Up/jquery.counterup.min.js"></script>
+<script src="vendors/Counter-Up/waypoints.min.js"></script>
+<script src="vendors/owl_carousel/owl.carousel.min.js"></script>
+<script src="vendors/stellar/jquery.stellar.js"></script>
+<script src="js/theme.js"></script>

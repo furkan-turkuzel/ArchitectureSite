@@ -1,0 +1,16 @@
+﻿@model EkinciProject.Web.Models.VisitorViewModel
+
+@using (Html.BeginForm("Message", "Contact", FormMethod.Post, new { @class = "form-inline contact_box" }))
+{
+    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control input_box", placeholder = "Adınızı giriniz" })
+    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control input_box", placeholder = "Mail adresiniz" })
+    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control input_box", placeholder = "Konu nedir?" })
+    @Html.TextAreaFor(x => x.FullName, new { @class = "form-control input_box", placeholder = "Mesajınız" })
+
+    <div class="alert alert-@ViewBag.MessageType" role="alert">
+        @ViewBag.Message
+    </div>
+
+    <button type="submit" class="btn btn-default">Gönder</button>
+}
+
